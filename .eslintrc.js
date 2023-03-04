@@ -8,10 +8,10 @@ module.exports = {
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
+    sourceType: 'module'
   },
   rules: {
     indent: ['error', 2],
     camelcase: 'off',
-    strict: 'off',
   },
 }
