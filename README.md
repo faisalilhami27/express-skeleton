@@ -24,7 +24,7 @@ app
         └ interface                   → Adapters and formatters for use cases and entities to external agency such as Database or the Web
             └ controllers             → Express.js route handlers
             └ middlewares             → Express.js route middlewares (protection)
-            └ requests                → Express.js validation
+            └ requests                → Express.js validation request from client
             └ views                   → Express.js views application (HTML)
         └ utils                       → application helper etc
     └ node_modules (generated)        → NPM dependencies

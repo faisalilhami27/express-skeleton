@@ -10,7 +10,7 @@ class Consumer {
       retry: {
         maxRetryTime: 5000,
         initialRetryTime: 3000,
-        retries: 3,
+        retries: parseInt(constant.kafka.KAFKA_MAX_RETRY),
         restartOnFailure: async () => true
       }
     });
