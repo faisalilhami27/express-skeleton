@@ -1,8 +1,11 @@
 const {Kafka} = require('kafkajs');
-const utils = require('../../../utils/helper');
-const constant = require('../../../constant/kafka');
+const utils = require('../../../../utils/helper');
+const constant = require('../../../../constant/kafka');
 
 class Consumer {
+  /**
+   * constructor
+   */
   constructor() {
     this.kafka = new Kafka({
       clientId: constant.kafka.KAFKA_CLIENT_ID,
@@ -17,6 +20,12 @@ class Consumer {
     this.consumer = this.kafka.consumer({groupId: constant.kafka.KAFKA_CLIENT_ID});
   }
 
+  /**
+   * process message and show result message from kafka
+   * @param message
+   * @param callback
+   * @returns {Promise<void>}
+   */
   async processMessage(message, callback) {
     try {
       callback(message);
@@ -30,6 +39,12 @@ class Consumer {
     }
   };
 
+  /**
+   * consume message from kafka
+   * @param topic
+   * @param callback
+   * @returns {Promise<void>}
+   */
   async consumeMessage(topic, callback) {
     await this.consumer.connect();
     await this.consumer.subscribe({topic});

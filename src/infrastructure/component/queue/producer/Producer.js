@@ -1,8 +1,11 @@
 const { Kafka } = require('kafkajs');
-const utils = require('../../../utils/helper');
-const constant = require('../../../constant/kafka');
+const utils = require('../../../../utils/helper');
+const constant = require('../../../../constant/kafka');
 
 class Producer {
+  /**
+   *
+   */
   constructor() {
     this.kafka = new Kafka({
       clientId: constant.kafka.KAFKA_CLIENT_ID,
@@ -17,6 +20,12 @@ class Producer {
     this.producer = this.kafka.producer();
   }
 
+  /**
+   * send message to kafka
+   * @param topic
+   * @param message
+   * @returns {Promise<void>}
+   */
   async sendMessage(topic, message) {
     let retries = 0;
     let delay = 100;

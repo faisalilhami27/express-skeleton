@@ -13,12 +13,14 @@ app
             └ dto                     → initiate data transfer object
             └ models                  → Domain model objects such as Entities, Aggregates, Value Objects, Business Events, Serializers, etc.
         └ infrastructure              → Frameworks, drivers and tools such as Database, the Web Framework, mailing/logging/glue code etc.
-            └ cache                   → cache data objects
-            L queue                   → queue such as (RabbitMQ, Kafka, etc)
-                └ producer            → producer to queue such as (RabbitMQ, Kafka, etc)
-                └ consumer            → consumer from queue such as (RabbitMQ, Kafka, etc)
+            └ component               → third party component such as (axios, cron, redis, etc)
+                └ cache               → cache data objects
+                └ client              → http request client such as (axios, etc)
+                └ scheduler           → scheduler such as (cron, etc)
+                L queue               → queue such as (RabbitMQ, Kafka, etc)
+                    └ producer        → producer to queue such as (RabbitMQ, Kafka, etc)
+                    └ consumer        → consumer from queue such as (RabbitMQ, Kafka, etc)
             └ database                → connection to database
-            └ scheduler               → scheduler such as (cron, etc)
             └ http                    → Express.js Web server configuration (routes, plugins, etc.)
                 └ routes              → Express.js routes definition
         └ interface                   → Adapters and formatters for use cases and entities to external agency such as Database or the Web

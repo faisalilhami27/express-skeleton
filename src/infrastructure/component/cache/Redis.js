@@ -1,5 +1,5 @@
 const {createClient} = require('redis')
-const constant = require('../../constant/redis')
+const constant = require('../../../constant/redis')
 let client;
 (async () => {
   client = createClient({
