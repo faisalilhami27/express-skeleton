@@ -4,6 +4,7 @@ const logger = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
+const app = express()
 
 // import routes
 const healthRouter = require('./routes/health/health')
@@ -11,7 +12,9 @@ const healthRouter = require('./routes/health/health')
 // check environment
 require('../../config/environment')();
 
-const app = express()
+// check mongo connection
+require('../database/mongo')(app);
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(express.json({ limit: '10mb' }))
