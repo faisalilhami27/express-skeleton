@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     indent: ['error', 2],
     camelcase: 'off',
+    'n/no-path-concat': 'off',
   },
 }

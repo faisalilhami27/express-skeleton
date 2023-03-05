@@ -4,6 +4,7 @@ const logger = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
+const sequelize = require('../../domain/models/index').sequelize
 
 // import routes
 const healthRouter = require('./routes/health/health')
@@ -28,6 +29,14 @@ class Server {
     app.use('/', (req, res) => {
       res.send('Welcome to the API')
     })
+
+    sequelize.authenticate()
+      .then(() => {
+        console.log('Connection has been established successfully.')
+      })
+      .catch(err => {
+        console.error('Unable to connect to the database:', err)
+      })
   }
 }
 
