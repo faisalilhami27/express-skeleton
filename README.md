@@ -6,7 +6,7 @@
 app
     └ src                             → Application sources
         └ application                 → Application services layer
-            └ repositories            → Data access objects interfaces (Request data from services and query to Database) 
+            └ repositories            → Data access objects interfaces (Request data from services and query to Database)
             └ usecases                → Application business logic
         └ constant                    → Constant value or static value
         └ domain                      → Enterprise core business layer or Entities

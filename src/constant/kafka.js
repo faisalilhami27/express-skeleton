@@ -6,5 +6,5 @@ module.exports = {
     KAFKA_MAX_RETRY_TIME: process.env.KAFKA_MAX_RETRY_TIME || 5000,
     KAFKA_MAX_RETRY: process.env.KAFKA_MAX_RETRY || 3,
     KAFKA_INITIAL_RETRY_TIME: process.env.KAFKA_INITIAL_RETRY_TIME || 3000,
-  }
-}
+  },
+};

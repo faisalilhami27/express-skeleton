@@ -1,18 +1,19 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
 
-router.get('/', function (req, res, next) {
+const router = express.Router();
+
+router.get('/', (req, res) => {
   const healthcheck = {
     uptime: process.uptime(),
     message: 'OK',
     timestamp: Date.now(),
-  }
+  };
   try {
-    res.send(healthcheck)
+    res.send(healthcheck);
   } catch (error) {
-    healthcheck.message = error
-    res.status(503).send()
+    healthcheck.message = error;
+    res.status(503).send();
   }
-})
+});
 
-module.exports = router
+module.exports = router;
