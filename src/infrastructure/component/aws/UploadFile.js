@@ -1,43 +1,65 @@
 const AWS = require('aws-sdk');
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const sentry = require('@sentry/node');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
+const fs = require('fs');
 const common = require('../../../constant/common');
-
-const s3 = new AWS.S3({
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY,
-  region: process.env.REGION,
-});
+const aws = require('../../../constant/aws');
 
 class UploadFile {
-  constructor() {
-    AWS.config.update({
-      region: process.env.BUCKET_NAME,
-    });
+  #config(file) {
+    return {
+      Bucket: aws.aws.BUCKET_NAME,
+      Body: fs.createReadStream(file.path),
+      Key: `${file.originalname}`,
+    };
   }
 
-  async uploadFileToS3() {
+  async uploadFileToS3V2(file) {
     try {
-      multer({
-        storage: multerS3({
-          s3,
-          bucket: process.env.BUCKET_NAME,
-          key(req, file, cb) {
-            cb(null, `${Date.now().toString()}-${file.originalname}`);
-          },
-        }),
+      const s3 = new AWS.S3({
+        accessKeyId: process.env.ACCESS_KEY_ID,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY,
+        region: process.env.REGION,
       });
-      console.log('Upload file to S3 successfully');
+
+      const params = this.#config(file);
+      s3.upload(params, (error, data) => {
+        if (error) {
+          console.log('Error: Cannot upload file to S3: ', error);
+          sentry.captureException(error);
+        }
+        console.log('Upload file to S3 successfully with: ', data.Location);
+      });
     } catch (error) {
-      if (common.common.APP_ENV !== 'local') {
-        sentry.captureException(error);
+      if (common.common.APP_ENV === 'local') {
+        console.log('Error: Cannot upload file to S3: ', error);
       } else {
-        console.log('Error: Cannot upload file to S3');
-        console.log(error);
+        sentry.captureException(error);
+      }
+    }
+  }
+
+  async uploadFileToS3V3(file) {
+    try {
+      const client = new S3Client({
+        accessKeyId: process.env.ACCESS_KEY_ID,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY,
+        region: process.env.REGION,
+      });
+
+      const params = this.#config(file);
+      await client.send(new PutObjectCommand(params))
+        .then((data) => {
+          console.log('Upload file to S3 successfully with request id:', data.$metadata.requestId);
+        });
+    } catch (error) {
+      if (common.common.APP_ENV === 'local') {
+        console.log('Error: Cannot upload file to S3: ', error);
+      } else {
+        sentry.captureException(error);
       }
     }
   }
 }
 
-module.exports = new UploadFile().uploadFileToS3();
+module.exports = UploadFile;
