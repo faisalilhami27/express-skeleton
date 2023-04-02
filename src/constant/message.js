@@ -1,0 +1,51 @@
+const breakerPrefix = 'Breaker ';
+
+module.exports = {
+  Common: {
+    failed: 'Failed',
+    success: 'Success',
+    created: 'Created',
+    failure: 'Failure',
+    notFound: 'Data not found',
+    empty: 'Empty',
+    duplicate: 'Duplicate',
+    invalid: 'Invalid',
+    exist: 'Already exist',
+    badRequest: 'Bad Request',
+    generalErr: 'Sorry, something wrong in our end, please try again later',
+    debug: 'Debug',
+    validationErr: 'Error validation',
+  },
+  Auth: {
+    unauthorize: 'You are not authorize to access this API',
+    invalidAPIKey: 'Failed to authenticate API Key',
+    invalidToken: 'Failed to authenticate token',
+    invalid: 'Failed to authenticate',
+  },
+  BCA: {
+    success: 'Success',
+    successfully: 'Berhasil Dijalankan',
+    pending: 'PENDING',
+    messageTitle: 'Topup Otomatis IRIS',
+    currency: 'IDR ',
+    activeConfigNotFound: 'There is no active configuration',
+    default: {
+      currency: 'IDR',
+      beneficiery_email: 'adi.radili@moladin.com',
+      created_at: new Date(),
+      created_by: 'System',
+      updated_by: 'System',
+    },
+  },
+  Breaker: {
+    success: breakerPrefix + 'success',
+    failure: breakerPrefix + 'failed',
+    timeout: breakerPrefix + 'timeout',
+    reject: breakerPrefix + 'rejected',
+    opened: breakerPrefix + 'opened',
+    halfOpen: breakerPrefix + 'halfOpened',
+    close: breakerPrefix + 'closed',
+    fire: breakerPrefix + 'fire',
+    fallback: 'Sorry, out of service right now',
+  },
+};

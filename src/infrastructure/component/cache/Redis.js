@@ -1,9 +1,10 @@
-const {createClient} = require('redis')
-const constant = require('../../../constant/redis')
+const { createClient } = require('redis');
+const constant = require('../../../constant/redis');
+
 let client;
 (async () => {
   client = createClient({
-    url: `redis://${constant.redis.REDIS_HOST}:${constant.redis.REDIS_PORT}`
+    url: `redis://${constant.redis.REDIS_HOST}:${constant.redis.REDIS_PORT}`,
   });
 
   client.on('error', (err) => console.log('Redis Client Error', err));
@@ -21,7 +22,7 @@ class Redis {
   async get(key) {
     const cachedData = await client.get(key);
     try {
-      const parsedCachedData = JSON.parse(cachedData)
+      const parsedCachedData = JSON.parse(cachedData);
       return !parsedCachedData ? null : cachedData;
     } catch (err) {
       return cachedData;

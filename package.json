@@ -12,6 +12,9 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "@sentry/node": "^7.40.0",
+    "@sentry/tracing": "^7.40.0",
+    "aws-sdk": "^2.1348.0",
     "axios": "^1.3.4",
     "body-parser": "^1.20.2",
     "cookie-parser": "~1.4.4",
@@ -22,14 +25,12 @@
     "helmet": "^6.0.1",
     "kafkajs": "^2.2.4",
     "morgan": "~1.9.1",
-    "mysql2": "^3.2.0",
-    "process": "^0.11.10",
-    "redis": "^4.6.5",
-    "sequelize": "^6.29.0",
-    "sequelize-cli": "^6.6.0"
+    "multer": "^1.4.5-lts.1",
+    "redis": "^4.6.5"
   },
   "devDependencies": {
     "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
