@@ -19,5 +19,9 @@ module.exports = {
     'no-await-in-loop': 'off',
     'no-param-reassign': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/no-dynamic-require': 'off',
+    'global-require': 'off',
+    'no-plusplus': 'off',
+    'no-promise-executor-return': 'off',
   },
 };

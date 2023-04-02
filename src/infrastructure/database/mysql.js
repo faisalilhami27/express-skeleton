@@ -7,7 +7,7 @@ module.exports = {
     database: constants.db.DB_NAME,
     host: constants.db.DB_HOST,
     dialect: constants.db.DB_DIALECT,
-    timezone: "+07:00"
+    timezone: '+07:00',
   },
   test: {
     username: constants.db.DB_USERNAME,
@@ -15,7 +15,7 @@ module.exports = {
     database: constants.db.DB_NAME,
     host: constants.db.DB_HOST,
     dialect: constants.db.DB_DIALECT,
-    timezone: "+07:00"
+    timezone: '+07:00',
   },
   production: {
     username: constants.db.DB_USERNAME,
@@ -23,6 +23,6 @@ module.exports = {
     database: constants.db.DB_NAME,
     host: constants.db.DB_HOST,
     dialect: constants.db.DB_DIALECT,
-    timezone: "+07:00"
+    timezone: '+07:00',
   },
-}
+};

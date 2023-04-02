@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const Sentry = require('@sentry/node');
 const Tracing = require('@sentry/tracing');
 const sentryConfig = require('../../constant/sentry');
+const { sequelize } = require('../../domain/models/index');
 
 // import routes
 const healthRouter = require('./routes/health/health');
@@ -53,6 +54,14 @@ class Server {
     app.use('/', (req, res) => {
       res.send('Welcome to the API');
     });
+
+    sequelize.authenticate()
+      .then(() => {
+        console.log('Connection has been established successfully.');
+      })
+      .catch((err) => {
+        console.error('Unable to connect to the database:', err);
+      });
   }
 }
 

@@ -26,7 +26,11 @@
     "kafkajs": "^2.2.4",
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
-    "redis": "^4.6.5"
+    "mysql2": "^3.2.0",
+    "process": "^0.11.10",
+    "redis": "^4.6.5",
+    "sequelize": "^6.30.0",
+    "sequelize-cli": "^6.6.0"
   },
   "devDependencies": {
     "eslint": "^8.35.0",
