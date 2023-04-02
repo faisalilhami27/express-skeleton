@@ -17,5 +17,7 @@ module.exports = {
     radix: 'off',
     'no-shadow': 'off',
     'no-await-in-loop': 'off',
+    'no-param-reassign': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

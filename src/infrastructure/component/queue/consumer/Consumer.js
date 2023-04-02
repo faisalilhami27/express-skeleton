@@ -23,7 +23,7 @@ class Consumer {
   }
 
   /**
-   * process message and show result message from kafka
+   * process message and show result message from queue
    * @param message
    * @param callback
    * @returns {Promise<void>}
@@ -32,7 +32,7 @@ class Consumer {
     try {
       callback(message);
     } catch (error) {
-      console.error('An error occurred: ' + error);
+      console.error(`An error occurred: ${error}`);
       this.consumer.pause();
       setTimeout(() => {
         this.consumer.resume();
@@ -42,7 +42,7 @@ class Consumer {
   }
 
   /**
-   * consume message from kafka
+   * consume message from queue
    * @param topic
    * @param callback
    * @returns {Promise<void>}

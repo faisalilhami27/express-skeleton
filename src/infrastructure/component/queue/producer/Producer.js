@@ -21,7 +21,7 @@ class Producer {
   }
 
   /**
-   * send message to kafka
+   * send message to queue
    * @param topic
    * @param message
    * @returns {Promise<void>}
