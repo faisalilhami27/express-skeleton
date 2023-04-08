@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Example extends Model {
     /**
@@ -19,24 +19,24 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BIGINT,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false
+      allowNull: false,
     },
     field: DataTypes.STRING, // change this field name to your own
     createdAt: {
       type: DataTypes.DATE,
       name: 'createdAt',
-      field: 'created_at'
+      field: 'created_at',
     },
     updatedAt: {
       type: DataTypes.DATE,
       name: 'updatedAt',
-      field: 'updated_at'
+      field: 'updated_at',
     },
     deletedAt: {
       type: DataTypes.DATE,
       name: 'deletedAt',
-      field: 'deleted_at'
-    }
+      field: 'deleted_at',
+    },
   }, {
     sequelize,
     modelName: 'Example',

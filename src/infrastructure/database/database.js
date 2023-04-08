@@ -1,4 +1,4 @@
-const constants = require('../../constant/mysql');
+const constants = require('../../constant/database');
 
 module.exports = {
   development: {
