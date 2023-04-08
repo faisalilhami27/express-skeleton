@@ -33,6 +33,11 @@ module.exports = () => {
   assertEnv('REDIS_HOST');
   assertEnv('SENTRY_DSN');
   assertEnv('SENTRY_ENVIRONMENT');
+  assertEnv('ACCESS_CLIENT_ID');
+  assertEnv('SECRET_ACCESS_KEY');
+  assertEnv('REGION');
+  assertEnv('BUCKET_NAME');
+  assertEnv('JWT_SECRET');
   validate();
   return true;
 };

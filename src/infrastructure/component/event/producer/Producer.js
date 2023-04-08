@@ -21,7 +21,7 @@ class Producer {
   }
 
   /**
-   * send message to queue
+   * send message to event
    * @param topic
    * @param message
    * @returns {Promise<void>}
