@@ -23,7 +23,7 @@ class Consumer {
   }
 
   /**
-   * process message and show result message from queue
+   * process message and show result message from event
    * @param message
    * @param callback
    * @returns {Promise<void>}
@@ -42,7 +42,7 @@ class Consumer {
   }
 
   /**
-   * consume message from queue
+   * consume message from event
    * @param topic
    * @param callback
    * @returns {Promise<void>}

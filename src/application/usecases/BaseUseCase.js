@@ -12,6 +12,10 @@ class BaseUseCase {
     return new Response(false, message, null, err);
   }
 
+  returnErrValidation(error) {
+    return new Response(false, Message.Common.validationErr, null, error);
+  }
+
   returnNotFound() {
     return new Response(false, Message.Common.notFound, null, null);
   }
