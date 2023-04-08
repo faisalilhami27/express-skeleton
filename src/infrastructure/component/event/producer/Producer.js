@@ -14,14 +14,14 @@ class Producer {
         maxRetryTime: 5000,
         initialRetryTime: 3000,
         retries: parseInt(constant.kafka.KAFKA_MAX_RETRY),
-        restartOnFailure: async () => true
-      }
+        restartOnFailure: async () => true,
+      },
     });
     this.producer = this.kafka.producer();
   }
 
   /**
-   * send message to kafka
+   * send message to event
    * @param topic
    * @param message
    * @returns {Promise<void>}
@@ -35,15 +35,13 @@ class Producer {
       try {
         await this.producer.send({
           topic,
-          messages: [
-            { value: JSON.stringify(message) }
-          ]
+          messages: [{ value: JSON.stringify(message) }],
         });
       } catch (error) {
-        console.log('Error in sending message to kafka: ' + error);
+        console.log(`Error in sending message to kafka: ${error}`);
         if (retries < maxRetry) {
           retries++;
-          await new Promise(resolve => setTimeout(resolve, delay));
+          await new Promise((resolve) => setTimeout(resolve, delay));
           delay *= 2;
         }
       }

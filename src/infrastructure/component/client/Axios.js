@@ -1,15 +1,16 @@
-const axios = require('axios')
+const axios = require('axios');
 
 class Axios {
-  #response = null
-  #request = null
+  #response = null;
+
+  #request = null;
 
   /**
    * set response for http client
    * @param response
    */
   setResponse(response) {
-    this.#response = response
+    this.#response = response;
   }
 
   /**
@@ -17,7 +18,7 @@ class Axios {
    * @returns {null}
    */
   getResponse() {
-    return this.#response
+    return this.#response;
   }
 
   /**
@@ -25,7 +26,7 @@ class Axios {
    * @param request
    */
   setRequest(request) {
-    this.#request = request
+    this.#request = request;
   }
 
   /**
@@ -33,7 +34,7 @@ class Axios {
    * @returns {null}
    */
   getRequest() {
-    return this.#request
+    return this.#request;
   }
 
   /**
@@ -42,9 +43,9 @@ class Axios {
    * @returns {Promise<void>}
    */
   async setHttp(params) {
-    this.setRequest(params)
-    const client = await this.initHttp()
-    return this.setResponse(client)
+    this.setRequest(params);
+    const client = await this.initHttp();
+    return this.setResponse(client);
   }
 
   /**
@@ -52,7 +53,7 @@ class Axios {
    * @returns {*}
    */
   getHttp() {
-    return this.getResponse()
+    return this.getResponse();
   }
 
   /**
@@ -60,15 +61,15 @@ class Axios {
    * @returns {Promise<AxiosInstance>}
    */
   async initHttp() {
-    const options = this.getRequest()
+    const options = this.getRequest();
     return axios.create({
       baseURL: options.baseURL,
       timeout: options.timeout,
       headers: options.headers,
       method: options.method,
-      params: options.params
+      params: options.params,
     });
   }
 }
 
-module.exports = Axios
+module.exports = Axios;

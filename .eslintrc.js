@@ -4,14 +4,20 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
-  extends: ['standard', 'eslint:recommended', 'prettier'],
-  overrides: [],
+  extends: 'airbnb-base',
+  overrides: [
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
   },
   rules: {
-    indent: ['error', 2],
-    camelcase: 'off',
+    indent: 'off',
+    'class-methods-use-this': 'off',
+    'no-console': 'off',
+    radix: 'off',
+    'no-shadow': 'off',
+    'no-await-in-loop': 'off',
+    'no-param-reassign': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
-}
+};

@@ -1,4 +1,4 @@
-const {Kafka} = require('kafkajs');
+const { Kafka } = require('kafkajs');
 const utils = require('../../../../utils/helper');
 const constant = require('../../../../constant/kafka');
 
@@ -14,14 +14,16 @@ class Consumer {
         maxRetryTime: 5000,
         initialRetryTime: 3000,
         retries: parseInt(constant.kafka.KAFKA_MAX_RETRY),
-        restartOnFailure: async () => true
-      }
+        restartOnFailure: async () => true,
+      },
     });
-    this.consumer = this.kafka.consumer({groupId: constant.kafka.KAFKA_CLIENT_ID});
+    this.consumer = this.kafka.consumer({
+      groupId: constant.kafka.KAFKA_CLIENT_ID,
+    });
   }
 
   /**
-   * process message and show result message from kafka
+   * process message and show result message from event
    * @param message
    * @param callback
    * @returns {Promise<void>}
@@ -30,29 +32,31 @@ class Consumer {
     try {
       callback(message);
     } catch (error) {
-      console.error('An error occurred: ' + error);
+      console.error(`An error occurred: ${error}`);
       this.consumer.pause();
       setTimeout(() => {
         this.consumer.resume();
       }, 3000);
       throw error;
     }
-  };
+  }
 
   /**
-   * consume message from kafka
+   * consume message from event
    * @param topic
    * @param callback
    * @returns {Promise<void>}
    */
   async consumeMessage(topic, callback) {
     await this.consumer.connect();
-    await this.consumer.subscribe({topic});
+    await this.consumer.subscribe({ topic });
     await this.consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
         try {
           await this.processMessage(message, callback);
-          await this.consumer.commitOffsets([{ topic, partition, offset: message.offset }]);
+          await this.consumer.commitOffsets([
+            { topic, partition, offset: message.offset },
+          ]);
         } catch (error) {
           console.error(error);
         }
