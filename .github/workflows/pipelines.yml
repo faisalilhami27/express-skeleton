@@ -29,5 +29,4 @@ jobs:
         run: npm ci
 
       - name: Prettier
-        run: |
-          npm run format
+        run: npm run format
