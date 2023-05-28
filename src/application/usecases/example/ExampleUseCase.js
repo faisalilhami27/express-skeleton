@@ -2,10 +2,10 @@ const BaseUseCase = require('../BaseUseCase');
 const ExampleRequest = require('../../../interface/requests/example/ExampleRequest');
 
 class ExampleUseCase extends BaseUseCase {
- constructor() {
-   super();
-   this.request = new ExampleRequest();
- }
+  constructor() {
+    super();
+    this.request = new ExampleRequest();
+  }
 
   /**
    * example use case method

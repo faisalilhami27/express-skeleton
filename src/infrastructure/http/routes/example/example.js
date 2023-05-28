@@ -11,11 +11,7 @@ const exampleController = new ExampleController();
 const multer = new Multer();
 
 // example using middleware verify token with jwt
-router.get(
-  '/',
-  middleware.verifyToken,
-  exampleController.methodName,
-);
+router.get('/', middleware.verifyToken, exampleController.methodName);
 
 // upload file example with multer
 router.post(
